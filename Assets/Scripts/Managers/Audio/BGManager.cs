@@ -11,17 +11,11 @@ public class BGManager : MonoBehaviour
 
     private void Awake()
     {
-        // Check if there'sn't already an instance of the audiomanager
-        if (FindObjectsOfType(typeof(BGManager)).Length > 1)
-        { Destroy(gameObject); }
-
-        // Make sure that the object stays when loading a new scene
-        DontDestroyOnLoad(transform.gameObject);
-
         // Get the component
         m_audioSource = gameObject.AddComponent<AudioSource>();
         m_audioSource.playOnAwake = false;
 
+        // Load all the content of the bgm folder in the array
         m_bgmArray = Resources.LoadAll("Audio/BGM");
     }
 

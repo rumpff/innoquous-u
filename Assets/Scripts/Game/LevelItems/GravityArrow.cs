@@ -34,7 +34,7 @@ public class GravityArrow : MonoBehaviour
             if (m_gameManager.Dimension != (int)m_direction)
             {
                 m_gameManager.Dimension = (int)m_direction;
-                m_gameManager.SFXManager.PlaySound(SFXManager.Sounds.GravityFlip);
+                AudioManager.SFX.PlaySound(SFXManager.Sounds.GravityFlip);
             }
         }
     }

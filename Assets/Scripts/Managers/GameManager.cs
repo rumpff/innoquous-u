@@ -22,7 +22,6 @@ public class GameManager : MonoBehaviour
     private GameStates m_currentGameState;
 
     private UIManager m_uiManager;
-    private SFXManager m_sfxManager;
 
     private MainCamera m_mainCamera;
 
@@ -49,8 +48,6 @@ public class GameManager : MonoBehaviour
         gameObject.name = "GameManager";
 
         m_uiManager = GetComponent<UIManager>();
-        m_sfxManager = GameObject.Find("AudioManager").GetComponent<SFXManager>();
-        
 
         m_currentDimension = 0;
         m_currentGameState = GameStates.PlayerInActive;
@@ -111,10 +108,6 @@ public class GameManager : MonoBehaviour
     {
         get { return m_uiManager; }
     }
-    public SFXManager SFXManager
-    {
-        get { return m_sfxManager; }
-    }
 
     public GameStates GameState
     {
@@ -165,7 +158,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        SFXManager.PlaySound(SFXManager.Sounds.GravityFlip);
+        AudioManager.SFX.PlaySound(SFXManager.Sounds.GravityFlip);
     }
     public int Dimension
     {

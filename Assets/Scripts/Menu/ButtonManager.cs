@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ButtonManager : MonoBehaviour
 {
-    private SFXManager m_sfxManager;
     private Canvas m_canvas;
     private RectTransform m_rectTransform;
 
@@ -26,7 +25,6 @@ public class ButtonManager : MonoBehaviour
     private void Start()
     {
         m_canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-        m_sfxManager = GameObject.Find("AudioManager").GetComponent<SFXManager>();
         m_rectTransform = transform as RectTransform;
         m_teleportIndex = new bool[m_ButtonArray.Length];
 
@@ -57,7 +55,7 @@ public class ButtonManager : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
             {
                 m_ButtonArray[i].Confirm();
-                m_sfxManager.PlaySound(SFXManager.Sounds.MenuClick);
+                AudioManager.SFX.PlaySound(SFXManager.Sounds.MenuClick);
             }
         }
 
@@ -69,7 +67,7 @@ public class ButtonManager : MonoBehaviour
 
                 MoveButtons(1);
                 m_scrollTimer = m_scrollSpeed;
-                m_sfxManager.PlaySound(SFXManager.Sounds.MenuSelect);
+                AudioManager.SFX.PlaySound(SFXManager.Sounds.MenuSelect);
             }
             else
             {
@@ -84,7 +82,7 @@ public class ButtonManager : MonoBehaviour
 
                 MoveButtons(-1);
                 m_scrollTimer = m_scrollSpeed;
-                m_sfxManager.PlaySound(SFXManager.Sounds.MenuSelect);
+                AudioManager.SFX.PlaySound(SFXManager.Sounds.MenuSelect);
             }
             else
             {

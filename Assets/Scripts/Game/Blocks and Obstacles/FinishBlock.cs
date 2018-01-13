@@ -23,7 +23,7 @@ public class FinishBlock : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             m_gameManager.GameState = GameManager.GameStates.PlayerFinished;
-            m_gameManager.SFXManager.PlaySound(SFXManager.Sounds.LevelComplete);
+            AudioManager.SFX.PlaySound(SFXManager.Sounds.LevelComplete);
 
             m_explosionParticleSytem.Play();
         }

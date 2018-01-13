@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
         m_rigidbody = GetComponent<Rigidbody>();
         m_playerState = PlayerStates.inactive;
 
-        m_gameManager.SFXManager.PlaySound(SFXManager.Sounds.LevelEnter);
+        AudioManager.SFX.PlaySound(SFXManager.Sounds.LevelEnter);
     }
 
     private void Update()
@@ -151,7 +151,7 @@ public class Player : MonoBehaviour
                     if (Input.GetKey(KeyCode.UpArrow) && IsGrounded())
                     {
                         m_jumpTimer = m_jumpMaxTime;
-                        m_gameManager.SFXManager.PlaySound(SFXManager.Sounds.PlayerJump);
+                        AudioManager.SFX.PlaySound(SFXManager.Sounds.PlayerJump);
                     }
                     if (Input.GetKey(KeyCode.UpArrow) && m_jumpTimer > 0)
                     {
@@ -194,7 +194,7 @@ public class Player : MonoBehaviour
                     if (Input.GetKey(KeyCode.UpArrow) && IsGrounded())
                     {
                         m_jumpTimer = m_jumpMaxTime;
-                        m_gameManager.SFXManager.PlaySound(SFXManager.Sounds.PlayerJump);
+                        AudioManager.SFX.PlaySound(SFXManager.Sounds.PlayerJump);
                     }
                     if(Input.GetKey(KeyCode.UpArrow) && m_jumpTimer > 0)
                     {
@@ -215,7 +215,7 @@ public class Player : MonoBehaviour
                 if (Input.GetKey(KeyCode.UpArrow))
                 {
                     m_jumpTimer = m_jumpMaxTime;
-                    m_gameManager.SFXManager.PlaySound(SFXManager.Sounds.PlayerJump);
+                    AudioManager.SFX.PlaySound(SFXManager.Sounds.PlayerJump);
                 }
                 break;
         }
@@ -255,7 +255,7 @@ public class Player : MonoBehaviour
     public void Kill()
     {
         m_gameManager.GameState = GameManager.GameStates.PlayerDead;
-        m_gameManager.SFXManager.PlaySound(SFXManager.Sounds.PlayerDeath);
+        AudioManager.SFX.PlaySound(SFXManager.Sounds.PlayerDeath);
         gameObject.SetActive(false);
     }
 
