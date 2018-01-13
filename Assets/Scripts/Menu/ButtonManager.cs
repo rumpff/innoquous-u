@@ -36,6 +36,8 @@ public class ButtonManager : MonoBehaviour
         }
 
         m_buttonOffset = m_ButtonArray[0].RectTransform.sizeDelta.y + 4;
+
+        MoveButtons(Mathf.FloorToInt(m_ButtonArray.Length / 2));
     }
 
     private void Update()

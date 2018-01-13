@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     private float m_zRotation;
     private float m_rotationSpeed = 666;
 
-    private float m_moveSpeed = 10f;
+    private float m_moveSpeed = 18;
 
     private float m_jumpSpeed = 12f;
     private float m_jumpTimer = 0;
@@ -89,7 +89,6 @@ public class Player : MonoBehaviour
 
             case PlayerStates.inFlipper:
                 m_rigidbody.useGravity = false;
-                //m_Rigidbody.velocity = Vector3.zero;
 
                 if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
                 { SetStateToNormal(); }
@@ -123,108 +122,98 @@ public class Player : MonoBehaviour
             case PlayerStates.normal:
                 if (grav.x != 0) // Gravity is either left or right
                 {
-                    m_rigidbody.velocity = new Vector3(vel.x, 0, 0); // Reset the velocity of the movement's axis
+                    Vector2 endVel = new Vector3(vel.x, 0, 0);
 
                     if (Input.GetKey(KeyCode.LeftArrow))
                     {
-                        Vector3 moveVector = new Vector3(vel.x, -m_moveSpeed * Mathf.Sign(grav.x), 0);
+                        Vector3 moveVector = new Vector3(0, -m_moveSpeed * Mathf.Sign(grav.x), 0);
                         Ray ray = new Ray(transform.position, moveVector);
 
                         if (!Physics.Raycast(ray, transform.localScale.x / 2 + 0.001f))
                         {
-                            m_rigidbody.velocity = moveVector;
+                            endVel.y = moveVector.y;
                         }
                     }
 
                     if (Input.GetKey(KeyCode.RightArrow))
                     {
-                        Vector3 moveVector = new Vector3(vel.x, m_moveSpeed * Mathf.Sign(grav.x), 0);
+                        Vector3 moveVector = new Vector3(0, m_moveSpeed * Mathf.Sign(grav.x), 0);
                         Ray ray = new Ray(transform.position, moveVector);
 
                         if (!Physics.Raycast(ray, transform.localScale.x / 2 + 0.001f))
                         {
-                            m_rigidbody.velocity = moveVector;
+                            endVel.y = moveVector.y;
                         }
                     }
 
-                    if (Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded())
+                    if (Input.GetKey(KeyCode.UpArrow) && IsGrounded())
                     {
                         m_jumpTimer = m_jumpMaxTime;
                         m_gameManager.SFXManager.PlaySound(SFXManager.Sounds.PlayerJump);
                     }
                     if (Input.GetKey(KeyCode.UpArrow) && m_jumpTimer > 0)
                     {
-                        m_rigidbody.velocity = new Vector3(m_jumpSpeed * Mathf.Sign(-grav.y), vel.y, vel.z);
+                        endVel.x = (m_jumpSpeed * Mathf.Sign(-grav.x));
                         m_jumpTimer -= Time.deltaTime;
                     }
                     if (Input.GetKeyUp(KeyCode.UpArrow) && m_jumpTimer > 0)
                     {
                         m_jumpTimer = 0;
                     }
+
+                    m_rigidbody.velocity = endVel;
                 }
                 else // Gravity is either up or down
                 {
-                    m_rigidbody.velocity = new Vector3(0, vel.y, 0); // Reset the velocity of the movement's axis
+                    Vector2 endVel = new Vector3(0, vel.y, 0);
 
                     if (Input.GetKey(KeyCode.LeftArrow))
                     {
-                        Vector3 moveVector = new Vector3(m_moveSpeed * Mathf.Sign(grav.y), vel.y, 0);
+                        Vector3 moveVector = new Vector3(m_moveSpeed * Mathf.Sign(grav.y), 0, 0);
                         Ray ray = new Ray(transform.position, moveVector);
 
                         if (!Physics.Raycast(ray, transform.localScale.x / 2 + 0.001f))
                         {
-                            m_rigidbody.velocity = moveVector;
+                            endVel.x = moveVector.x;
                         }
                     }
 
                     if (Input.GetKey(KeyCode.RightArrow))
                     {
-                        Vector3 moveVector = new Vector3(-m_moveSpeed * Mathf.Sign(grav.y), vel.y, 0);
+                        Vector3 moveVector = new Vector3(-m_moveSpeed * Mathf.Sign(grav.y), 0, 0);
                         Ray ray = new Ray(transform.position, moveVector);
 
                         if (!Physics.Raycast(ray, transform.localScale.x / 2 + 0.001f))
                         {
-                            m_rigidbody.velocity = moveVector;
+                            endVel.x = moveVector.x;
                         }
                     }
 
-                    if (Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded())
+                    if (Input.GetKey(KeyCode.UpArrow) && IsGrounded())
                     {
                         m_jumpTimer = m_jumpMaxTime;
                         m_gameManager.SFXManager.PlaySound(SFXManager.Sounds.PlayerJump);
                     }
                     if(Input.GetKey(KeyCode.UpArrow) && m_jumpTimer > 0)
                     {
-                        m_rigidbody.velocity = new Vector3(vel.x, m_jumpSpeed * Mathf.Sign(-grav.y), vel.z);
+                        endVel.y = (m_jumpSpeed * Mathf.Sign(-grav.y));
                         m_jumpTimer -= Time.deltaTime;
                     }
                     if(Input.GetKeyUp(KeyCode.UpArrow) && m_jumpTimer > 0)
                     {
                         m_jumpTimer = 0;
                     }
+
+                    m_rigidbody.velocity = endVel;
                 }
                 break;
 
             case PlayerStates.inFlipper:
-                if (grav.x != 0) // Gravity is either left or right
+                // Check for activation of jump, the rest is handled in the normal state
+                if (Input.GetKey(KeyCode.UpArrow))
                 {
-                    m_rigidbody.velocity = new Vector3(vel.x, 0, 0); // Reset the velocity of the movement's axis
-
-                    if (Input.GetKeyDown(KeyCode.UpArrow))
-                    {
-                        m_rigidbody.AddForce(new Vector3(m_jumpSpeed * -grav.x, 0, 0));
-                        m_gameManager.SFXManager.PlaySound(SFXManager.Sounds.PlayerJump);
-                    }
-                }
-                else // Gravity is either up or down
-                {
-                    m_rigidbody.velocity = new Vector3(0, vel.y, 0); // Reset the velocity of the movement's axis
-
-                    if (Input.GetKeyDown(KeyCode.UpArrow))
-                    {
-                        m_rigidbody.AddForce(new Vector3(0, m_jumpSpeed * -grav.y, 0));
-                        m_gameManager.SFXManager.PlaySound(SFXManager.Sounds.PlayerJump);
-                    }
+                    m_jumpTimer = m_jumpMaxTime;
+                    m_gameManager.SFXManager.PlaySound(SFXManager.Sounds.PlayerJump);
                 }
                 break;
         }
