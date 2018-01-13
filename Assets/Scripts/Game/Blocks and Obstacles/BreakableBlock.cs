@@ -5,20 +5,24 @@ using UnityEngine;
 public class BreakableBlock : MonoBehaviour
 {
     private float m_minSpeedToBreak;
+    private ParticleSystem m_particleSystem;
 
 	void Awake ()
     {
         m_minSpeedToBreak = 32;
     }
 	
-	void Update () {
-		
-	}
+	void Start ()
+    {
+        m_particleSystem = transform.GetChild(0).GetComponent<ParticleSystem>();
+    }
 
     private void Break()
     {
         GetComponent<BoxCollider>().enabled = false;
         GetComponent<MeshRenderer>().enabled = false;
+        m_particleSystem.Play();
+        AudioManager.SFX.PlaySound(SFXManager.Sounds.BlockBreak);
     }
 
     public bool PlayerCollision(float verticalSpeed, Player player)
