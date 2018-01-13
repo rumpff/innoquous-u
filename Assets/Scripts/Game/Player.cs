@@ -21,14 +21,16 @@ public class Player : MonoBehaviour
 
     private PlayerStates m_playerState;
 
+    private Vector3 m_velocityPrev;
+
     private float m_zRotation;
     private float m_rotationSpeed = 666;
 
     private float m_moveSpeed = 18;
 
-    private float m_jumpSpeed = 12f;
+    private float m_jumpSpeed = 15f;
     private float m_jumpTimer = 0;
-    private float m_jumpMaxTime = 0.18f;
+    private float m_jumpMaxTime = 0.22f;
 
     private void Start()
     {
@@ -216,6 +218,31 @@ public class Player : MonoBehaviour
                     m_gameManager.SFXManager.PlaySound(SFXManager.Sounds.PlayerJump);
                 }
                 break;
+        }
+
+        m_velocityPrev = m_rigidbody.velocity;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == 10) // Object has the  'breakable' layer
+        {
+            Vector3 grav = Physics.gravity;
+            float fallSpeed;
+
+            if (grav.x != 0) // Gravity is either left or right
+            {
+                fallSpeed = m_velocityPrev.x;
+            }
+            else // Gravity is either up or down
+            {
+                fallSpeed = m_velocityPrev.y;
+            }
+
+            if (collision.gameObject.GetComponent<BreakableBlock>().PlayerCollision(fallSpeed, this))
+            {
+                m_rigidbody.velocity = m_velocityPrev;
+            }
         }
     }
 
