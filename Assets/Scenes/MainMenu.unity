@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 18043326}
   - component: {fileID: 18043325}
   m_Layer: 5
-  m_Name: Button (8)
+  m_Name: ButtonExitGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -215,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6016f949bd8edb14abea797614ff754d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_buttonType: 0
+  m_buttonType: 8
 --- !u!114 &18043326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 47537040}
   - component: {fileID: 47537039}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ButtonPlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -339,6 +339,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 164597351}
+  - component: {fileID: 164597352}
   - component: {fileID: 164597350}
   - component: {fileID: 164597349}
   m_Layer: 0
@@ -356,7 +357,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 164597348}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3aac464b763473443a9498e61b035012, type: 3}
+  m_Script: {fileID: 11500000, guid: a075704548abeba4a95a72d0fcbd7df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &164597350
@@ -365,9 +366,9 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 164597348}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a075704548abeba4a95a72d0fcbd7df6, type: 3}
+  m_Script: {fileID: 11500000, guid: 3aac464b763473443a9498e61b035012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &164597351
@@ -383,6 +384,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &164597352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 164597348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d8c886eb4bb3a4ea12bb76851e744f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &214118639
 GameObject:
   m_ObjectHideFlags: 0
@@ -1090,7 +1102,7 @@ GameObject:
   - component: {fileID: 470517801}
   - component: {fileID: 470517800}
   m_Layer: 5
-  m_Name: Button (7)
+  m_Name: ButtonSecretPoem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1126,7 +1138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6016f949bd8edb14abea797614ff754d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_buttonType: 0
+  m_buttonType: 7
 --- !u!114 &470517801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1420,7 +1432,7 @@ GameObject:
   - component: {fileID: 643090702}
   - component: {fileID: 643090701}
   m_Layer: 5
-  m_Name: Button (5)
+  m_Name: ButtonCredits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1456,7 +1468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6016f949bd8edb14abea797614ff754d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_buttonType: 0
+  m_buttonType: 5
 --- !u!114 &643090702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1502,7 +1514,7 @@ GameObject:
   - component: {fileID: 718386946}
   - component: {fileID: 718386945}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: ButtonOptions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1538,7 +1550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6016f949bd8edb14abea797614ff754d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_buttonType: 0
+  m_buttonType: 4
 --- !u!114 &718386946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1584,7 +1596,7 @@ GameObject:
   - component: {fileID: 743723520}
   - component: {fileID: 743723519}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: ButtonCustomLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1620,7 +1632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6016f949bd8edb14abea797614ff754d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_buttonType: 0
+  m_buttonType: 1
 --- !u!114 &743723520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1916,7 +1928,7 @@ GameObject:
   - component: {fileID: 966811074}
   - component: {fileID: 966811073}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: ButtonHelp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1952,7 +1964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6016f949bd8edb14abea797614ff754d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_buttonType: 0
+  m_buttonType: 3
 --- !u!114 &966811074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2334,7 +2346,7 @@ GameObject:
   - component: {fileID: 1275383908}
   - component: {fileID: 1275383907}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: ButtonLevelEditor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2370,7 +2382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6016f949bd8edb14abea797614ff754d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_buttonType: 0
+  m_buttonType: 2
 --- !u!114 &1275383908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2416,7 +2428,7 @@ GameObject:
   - component: {fileID: 1347698976}
   - component: {fileID: 1347698975}
   m_Layer: 5
-  m_Name: Button (6)
+  m_Name: ButtonStatistics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2452,7 +2464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6016f949bd8edb14abea797614ff754d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_buttonType: 0
+  m_buttonType: 6
 --- !u!114 &1347698976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2573,8 +2585,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1519510622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 681.5, y: 253, z: 0}
-  m_LocalScale: {x: 0.46851853, y: 0.46851853, z: 0.46851853}
+  m_LocalPosition: {x: 488, y: 274.5, z: 0}
+  m_LocalScale: {x: 0.5083333, y: 0.5083333, z: 0.5083333}
   m_Children:
   - {fileID: 7182888}
   - {fileID: 214118640}

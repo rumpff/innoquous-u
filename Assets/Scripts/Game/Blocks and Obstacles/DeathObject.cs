@@ -7,7 +7,8 @@ public class DeathObject : MonoBehaviour
     public enum ObjectTypes
     {
         LevelBorder,
-        Razor
+        Razor,
+        Bullet
     }
 
     [SerializeField]
@@ -31,6 +32,9 @@ public class DeathObject : MonoBehaviour
                 break;
             case ObjectTypes.Razor:
                 return "razor";
+                break;
+            case ObjectTypes.Bullet:
+                return "shooting";
                 break;
             default:
                 return "error";

@@ -19,13 +19,13 @@ public class BGManager : MonoBehaviour
         m_bgmArray = Resources.LoadAll("Audio/BGM");
     }
 
-    public void Update()
-    {
-        if (!m_audioSource.isPlaying)
-        {
-            PlayMusic();
-        }
-    }
+    //public void Update()
+    //{
+    //    if (!m_audioSource.isPlaying)
+    //    {
+    //        PlayMusic();
+    //    }
+    //}
 
     public void PlayMusic()
     {

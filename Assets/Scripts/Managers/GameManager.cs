@@ -68,10 +68,24 @@ public class GameManager : MonoBehaviour
 
             case GameStates.PlayerFinished:
 
-                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
-                { m_deaths = 0; } // Goto next level
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space)) // Goto next level
+                {
+                    m_deaths = 0;
 
-                if (Input.GetKeyDown(KeyCode.R))
+                    if(SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1).IsValid()) // Next scene exists
+                    {
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                    }
+                    else // No more scenes to go to
+                    {
+                        SceneManager.LoadScene(0); // Go to the main menu instead
+                    }
+                } 
+
+                if (Input.GetKeyDown(KeyCode.Escape)) // Goto main menu
+                { m_deaths = 0; SceneManager.LoadScene(0); }
+
+                if (Input.GetKeyDown(KeyCode.R)) // Restart level
                 { StartCoroutine(ReloadSceneAsync()); m_deaths = 0; }
 
                 break;
@@ -119,17 +133,12 @@ public class GameManager : MonoBehaviour
         get { return m_mainCamera; }
     }
 
-    public Vector2 GetDimension(bool plusOne)
+    public Vector2 GetDimension()
     {
-        if (!plusOne) { return m_dimensions[m_currentDimension]; }
-        else
-        {
-            int pos = m_currentDimension + 1;
-            if (pos >= m_dimensions.Length) { pos = 0; }
-            return m_dimensions[pos];
-        }
+        return m_dimensions[m_currentDimension];
     }
-    public int GetDimension()
+
+    public int GetDimensionIndex()
     {
         return m_currentDimension;
     }

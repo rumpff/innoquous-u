@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Button : MonoBehaviour
 {
@@ -46,6 +47,7 @@ public class Button : MonoBehaviour
     {
         m_rectTransform.anchoredPosition = Vector2.Lerp(m_rectTransform.anchoredPosition, dest, 10 * Time.deltaTime);
 
+        // Delete this when all buttons have a purpose
         if(m_selected)
         {
             m_currentColor = Color.Lerp(m_currentColor, m_activeColor, 6f * Time.deltaTime);
@@ -85,6 +87,14 @@ public class Button : MonoBehaviour
     {
         switch(m_buttonType)
         {
+            case ButtonType.Play:
+                SceneManager.LoadScene(1);
+                break;
+
+            case ButtonType.ExitGame:
+                Application.Quit();
+                break;
+
             default:
                 m_currentColor = m_errorColor;
                 break;

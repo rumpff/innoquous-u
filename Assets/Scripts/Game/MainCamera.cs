@@ -50,7 +50,7 @@ public class MainCamera : MonoBehaviour
 
     private void FixedUpdate()
     {
-        m_rotateDest = m_gameManager.GetDimension() * 90;
+        m_rotateDest = m_gameManager.GetDimensionIndex() * 90;
         m_rotateCurrent = Mathf.LerpAngle(m_rotateCurrent, m_rotateDest, 10 * Time.deltaTime);
 
         Vector3 pos = Vector3.Lerp(transform.position, m_player.transform.position, 7 * Time.deltaTime);

@@ -44,18 +44,23 @@ public class ButtonManager : MonoBehaviour
         for (int i = 0; i < m_ButtonArray.Length; i++)
         {
             var pos = new Vector2(m_rectTransform.anchoredPosition.x, ((m_buttonOffset) * -i) + (m_ButtonArray.Length / 2 * m_buttonOffset) + m_rectTransform.anchoredPosition.y);
+            var currentSelected = i == Mathf.FloorToInt(m_ButtonArray.Length / 2);
 
             if (m_teleportIndex[i] == true) // Button needs to teleport to new pos
             { m_ButtonArray[i].SetPosition(pos); }
             else // Button can lerp to new pos
             { m_ButtonArray[i].SetDestination(pos); }
 
-            m_ButtonArray[i].Selected = (i == Mathf.FloorToInt(m_ButtonArray.Length / 2));
 
-            if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+            m_ButtonArray[i].Selected = currentSelected;
+            if (currentSelected)
             {
-                m_ButtonArray[i].Confirm();
-                AudioManager.SFX.PlaySound(SFXManager.Sounds.MenuClick);
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+                {
+                    // Check voor current selected
+                    m_ButtonArray[i].Confirm();
+                    AudioManager.SFX.PlaySound(SFXManager.Sounds.MenuClick);
+                }
             }
         }
 

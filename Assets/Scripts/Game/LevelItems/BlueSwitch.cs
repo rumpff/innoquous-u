@@ -15,7 +15,8 @@ public class BlueSwitch : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            m_gameManager.ActivateBlueSwitch();  
+            m_gameManager.ActivateBlueSwitch();
+            AudioManager.SFX.PlaySound(SFXManager.Sounds.Switch);
         }
     }
 }
