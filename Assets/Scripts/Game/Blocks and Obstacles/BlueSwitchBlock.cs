@@ -38,6 +38,6 @@ public class BlueSwitchBlock : MonoBehaviour
             { Dest = m_InactivePos; }
         }
 
-        transform.position = Vector3.Lerp(transform.position, Dest, 10 * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, Dest, 16 * Time.deltaTime);
 	}
 }
