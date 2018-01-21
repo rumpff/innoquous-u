@@ -1358,8 +1358,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d74f27a106246741a1e1eeb7e1abd58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_levelIndex: 101
-  m_levelName: Starter
+  m_levelIndex: 1
+  m_levelName: Hello World
 --- !u!4 &181224699
 Transform:
   m_ObjectHideFlags: 0
@@ -4536,12 +4536,12 @@ Prefab:
     - target: {fileID: 224866371517790636, guid: bff80562ed02a8143a679a9ad10984ea,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 538.5
+      value: 459.5
       objectReference: {fileID: 0}
     - target: {fileID: 224866371517790636, guid: bff80562ed02a8143a679a9ad10984ea,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 303
+      value: 258.5
       objectReference: {fileID: 0}
     - target: {fileID: 224866371517790636, guid: bff80562ed02a8143a679a9ad10984ea,
         type: 2}
@@ -4681,7 +4681,7 @@ Prefab:
     - target: {fileID: 224345118481931982, guid: bff80562ed02a8143a679a9ad10984ea,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -505.08353
+      value: -505.03262
       objectReference: {fileID: 0}
     - target: {fileID: 114137605532739004, guid: bff80562ed02a8143a679a9ad10984ea,
         type: 2}
@@ -4756,12 +4756,12 @@ Prefab:
     - target: {fileID: 224769609795367000, guid: bff80562ed02a8143a679a9ad10984ea,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: -959.85144
+      value: -959.942
       objectReference: {fileID: 0}
     - target: {fileID: 224769609795367000, guid: bff80562ed02a8143a679a9ad10984ea,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 540.08356
+      value: 540.03265
       objectReference: {fileID: 0}
     - target: {fileID: 114916165929865626, guid: bff80562ed02a8143a679a9ad10984ea,
         type: 2}
@@ -4791,7 +4791,7 @@ Prefab:
     - target: {fileID: 224069517126056474, guid: bff80562ed02a8143a679a9ad10984ea,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -505.08356
+      value: -505.03265
       objectReference: {fileID: 0}
     - target: {fileID: 114300329628735372, guid: bff80562ed02a8143a679a9ad10984ea,
         type: 2}
@@ -4926,7 +4926,7 @@ Prefab:
     - target: {fileID: 224734054039282036, guid: bff80562ed02a8143a679a9ad10984ea,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -505.08353
+      value: -505.03262
       objectReference: {fileID: 0}
     - target: {fileID: 114652165781115782, guid: bff80562ed02a8143a679a9ad10984ea,
         type: 2}
