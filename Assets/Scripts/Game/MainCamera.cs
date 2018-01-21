@@ -53,7 +53,7 @@ public class MainCamera : MonoBehaviour
         m_rotateDest = m_gameManager.GetDimensionIndex() * 90;
         m_rotateCurrent = Mathf.LerpAngle(m_rotateCurrent, m_rotateDest, 10 * Time.deltaTime);
 
-        Vector3 pos = Vector3.Lerp(transform.position, m_player.transform.position, 7 * Time.deltaTime);
+        Vector3 pos = Vector3.Lerp(transform.position, m_player.transform.position, 5 * Time.deltaTime);
         transform.position = new Vector3(pos.x, pos.y, m_zDistance);
         transform.eulerAngles = new Vector3(0, 0, m_rotateCurrent + m_finnishZoomCurve.Evaluate(m_finishTimer) * 10 - 10);
     }
