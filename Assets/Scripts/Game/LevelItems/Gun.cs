@@ -1,9 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
-[ExecuteInEditMode]
 public class Gun : MonoBehaviour
 {
     public enum Directions
@@ -35,13 +33,10 @@ public class Gun : MonoBehaviour
     private void Update()
     {
         transform.eulerAngles = new Vector3(0, 0, (int)m_direction * 90 + 180);
-        if(EditorApplication.isPlaying)
-        {
-            if(m_shootTimer < 0)
-            { Shoot(); }
-            else
-            { m_shootTimer -= Time.deltaTime; }
-        }
+        if(m_shootTimer < 0)
+        { Shoot(); }
+        else
+        { m_shootTimer -= Time.deltaTime; }
     }
 
     private void Shoot()
