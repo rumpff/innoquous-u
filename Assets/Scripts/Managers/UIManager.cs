@@ -18,9 +18,10 @@ public class UIManager : MonoBehaviour
     private string m_deathCause;
 
     private Image m_blackBG;
+    private Image[] m_healthBlocks;
 
     private bool m_statsUpdated = false;
-    void Start ()
+    void Start()
     {
         m_gameManager = GetComponent<GameManager>();
 
@@ -31,6 +32,16 @@ public class UIManager : MonoBehaviour
         m_blackBG = GameObject.Find("BlackBG").GetComponent<Image>();
         m_deathUIGroup = GameObject.Find("DeathUIGroup");
         m_deathCouseText = GameObject.Find("DeathCauseText").GetComponent<TextMeshProUGUI>();
+
+        var healthGroup = GameObject.Find("HealthGroup");
+        var healthCount = healthGroup.transform.childCount;
+
+        m_healthBlocks = new Image[healthCount];
+
+        for (int i = 0; i < healthCount; i++)
+        {
+            m_healthBlocks[i] = healthGroup.transform.GetChild(i).GetComponent<Image>();
+        }
 
         m_tip = GameObject.Find("InfoTip");
 
@@ -43,8 +54,8 @@ public class UIManager : MonoBehaviour
 
         DisableTip();
     }
-	
-	void Update ()
+
+    void Update()
     {
         // Basic switch for normal states
         switch (m_gameManager.GameState)
@@ -59,6 +70,7 @@ public class UIManager : MonoBehaviour
                 GameUIVisible(true);
                 m_deathUIGroup.SetActive(false);
                 m_finishedUIGroup.SetActive(false);
+                UpdateHealthbar();
                 break;
 
             case GameManager.GameStates.PlayerDead:
@@ -76,7 +88,7 @@ public class UIManager : MonoBehaviour
                 {
                     m_blackBG.color = new Color(0, 0, 0, 255);
                 }
-                break;            
+                break;
         }
     }
 
@@ -106,7 +118,7 @@ public class UIManager : MonoBehaviour
     {
         if (visible)
         {
-            m_gameUILeftOffset = Mathf.Lerp(m_gameUILeftOffset, 0, 6 * Time.deltaTime); 
+            m_gameUILeftOffset = Mathf.Lerp(m_gameUILeftOffset, 0, 6 * Time.deltaTime);
         }
         else
         {
@@ -116,6 +128,18 @@ public class UIManager : MonoBehaviour
         m_gameUIGroup.offsetMin = new Vector2(m_gameUILeftOffset, 0);
         m_gameUIGroup.offsetMax = new Vector2(0, 0);
     }
+
+    private void UpdateHealthbar()
+    {
+        var health = m_gameManager.Player.Health;
+
+        for (int i = 0; i < m_healthBlocks.Length; i++)
+        {
+            var alpha = (health * 10 - i);
+            m_healthBlocks[i].color = new Color(1, 1, 1, alpha);
+        }
+    }
+
 
     public void EnableTip(string text)
     {

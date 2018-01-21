@@ -35,6 +35,8 @@ public class Player : MonoBehaviour
     private float m_health = 1;
     private float m_healthDrainPerSecond = 1;
 
+    private bool m_healthDrained; // Bool to prevent that health is drained multiple times per frame
+
     private void Start()
     {
         m_modelPar = transform.GetChild(0).gameObject;
@@ -48,6 +50,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        m_healthDrained = false;
         Vector3 grav = Physics.gravity;
 
         switch (m_playerState)
@@ -255,9 +258,10 @@ public class Player : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.layer == 11) // If the object is a static
+        if (other.gameObject.tag == "Static") // If the object is a static
         {
-            m_health -= Time.deltaTime * m_healthDrainPerSecond;
+            if (!m_healthDrained)
+            { m_health -= Time.deltaTime * m_healthDrainPerSecond; m_healthDrained = true; }
         }
     }
 
@@ -308,6 +312,5 @@ public class Player : MonoBehaviour
     public float Health
     {
         get { return m_health; }
-        set { m_health = value; }
     }
 }

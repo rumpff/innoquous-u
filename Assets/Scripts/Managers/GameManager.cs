@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
 
     private GameStates m_currentGameState;
 
+    private Player m_player;
+
     private UIManager m_uiManager;
 
     private MainCamera m_mainCamera;
@@ -54,6 +56,7 @@ public class GameManager : MonoBehaviour
         m_gameTime = 0;
 
         m_mainCamera = GameObject.Find("Main Camera").GetComponent<MainCamera>();
+        m_player = GameObject.Find("Player").GetComponent<Player>();
     }
     private void Update()
     {
@@ -123,6 +126,11 @@ public class GameManager : MonoBehaviour
     public int Deaths
     {
         get { return m_deaths; }
+    }
+
+    public Player Player
+    {
+        get { return m_player; }
     }
 
     public UIManager UIManager

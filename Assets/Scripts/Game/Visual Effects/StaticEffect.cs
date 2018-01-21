@@ -3,16 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Sprites;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class StaticEffect : MonoBehaviour
 {
 
     void Update()
     {
-        //Texture2D texture = new Texture2D(128, 128);
-        //Sprite sprite = Sprite.Create(texture, new Rect(0, 0, 64, 64), Vector2.zero);
-        //GetComponent<SpriteRenderer>().sprite = sprite;
+        var xScale = transform.lossyScale.x;
+        var yScale = transform.lossyScale.y;
 
-        Texture2D texture = GetComponent<SpriteRenderer>().sprite.texture;
+        Texture2D texture = new Texture2D(128 * (int)xScale, 128 * (int)yScale);
+        Sprite sprite = Sprite.Create(texture, new Rect(0, 0, 100 + xScale, 100 + yScale), Vector2.zero);
+
+        texture.filterMode = FilterMode.Point;
+        GetComponent<SpriteRenderer>().sprite = sprite;
+
+        //Texture2D texture = GetComponent<SpriteRenderer>().sprite.texture;
 
         for (int y = 0; y < texture.height; y++)
         {
