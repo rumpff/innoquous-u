@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4883301431870848}
   - component: {fileID: 212736702646950776}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FlipperPart (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4436194566120358}
   - component: {fileID: 212402673002447362}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FlipperPart (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 114149041702150266}
   - component: {fileID: 65156995790504486}
   - component: {fileID: 54819046158029330}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GravityFlipper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4435309177289704}
   - component: {fileID: 212806634810328386}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FlipperPart (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4972847715381612}
   - component: {fileID: 212138639621542330}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FlipperPart (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

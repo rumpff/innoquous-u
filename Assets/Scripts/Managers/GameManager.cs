@@ -72,9 +72,13 @@ public class GameManager : MonoBehaviour
                 {
                     m_deaths = 0;
 
-                    if(SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1).IsValid()) // Next scene exists
+                    var sceneCount = SceneManager.sceneCountInBuildSettings;
+                    var currentScene = SceneManager.GetActiveScene().buildIndex;
+
+                    if ((SceneManager.GetActiveScene().buildIndex + 1) < sceneCount) // Next scene exists
                     {
-                        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                        SceneManager.LoadScene(currentScene + 1);
+                        
                     }
                     else // No more scenes to go to
                     {
@@ -94,6 +98,9 @@ public class GameManager : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
                 { StartCoroutine(ReloadSceneAsync()); m_deaths++; }
+
+                if (Input.GetKeyDown(KeyCode.Escape)) // Goto main menu
+                { m_deaths = 0; SceneManager.LoadScene(0); }
 
                 break;
         }

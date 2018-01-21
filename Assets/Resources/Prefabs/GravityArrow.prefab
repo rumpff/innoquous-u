@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114265839584764324}
   - component: {fileID: 54176498560787608}
   - component: {fileID: 65180613275716914}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GravityArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4320048992094756}
   - component: {fileID: 212777514362843978}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GravityArrowSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

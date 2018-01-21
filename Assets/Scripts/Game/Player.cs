@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
 
     private float m_jumpSpeed = 15f;
     private float m_jumpTimer = 0;
-    private float m_jumpMaxTime = 0.22f;
+    private float m_jumpMaxTime = 0.15f;
 
     private float m_health = 1;
     private float m_healthDrainPerSecond = 1;
