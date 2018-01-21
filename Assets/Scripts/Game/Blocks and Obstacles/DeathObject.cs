@@ -8,6 +8,7 @@ public class DeathObject : MonoBehaviour
     {
         LevelBorder,
         Razor,
+        SwitchRazor,
         Bullet
     }
 
@@ -35,6 +36,9 @@ public class DeathObject : MonoBehaviour
                 break;
             case ObjectTypes.Bullet:
                 return "shooting";
+                break;
+            case ObjectTypes.SwitchRazor:
+                return "SwitchRazor";
                 break;
             default:
                 return "error";
