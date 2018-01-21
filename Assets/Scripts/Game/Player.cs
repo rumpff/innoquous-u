@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     private float m_jumpMaxTime = 0.15f;
 
     private float m_health = 1;
-    private float m_healthDrainPerSecond = 1;
+    private float m_healthDrainPerSecond = 1.25f;
 
     private bool m_healthDrained; // Bool to prevent that health is drained multiple times per frame
 
@@ -261,7 +261,8 @@ public class Player : MonoBehaviour
         if (other.gameObject.tag == "Static") // If the object is a static
         {
             if (!m_healthDrained)
-            { m_health -= Time.deltaTime * m_healthDrainPerSecond; m_healthDrained = true; }
+            { m_health -= Time.deltaTime * m_healthDrainPerSecond;
+                m_healthDrained = true; }
         }
     }
 
